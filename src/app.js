@@ -26,7 +26,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(compression());
 
 // enable cors
-app.use(cors());
+const corsOptions = {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST", "PUT", "DELETE"], 
+};
+app.use(cors(corsOptions));
+
 app.options("*", cors());
 
 // TODO: CRIO_TASK_MODULE_AUTH - Initialize passport and add "jwt" authentication strategy
